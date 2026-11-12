@@ -1,0 +1,202 @@
+.schedule-editor {
+  display: grid;
+  gap: 8px;
+}
+
+.schedule-editor-row {
+  display: grid;
+  grid-template-columns: minmax(90px, .7fr) minmax(130px, 1fr) minmax(180px, 1.5fr);
+  gap: 8px;
+  padding: 10px;
+  border-radius: 9px;
+  background: var(--paper-2);
+}
+
+.schedule-editor-row label {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.schedule-editor-row input,
+.schedule-editor-row textarea,
+.checklist-add-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  outline: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 9px/1.5 'DM Sans', sans-serif;
+}
+
+.schedule-editor-row textarea {
+  min-height: 34px;
+  resize: vertical;
+}
+
+.schedule-editor-row input:focus,
+.schedule-editor-row textarea:focus,
+.checklist-add-form input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--purple) 18%, transparent);
+}
+
+.planning-error {
+  margin: 6px 0;
+  color: #b04450;
+  font-size: 9px;
+}
+
+:root[data-theme="dark"] .planning-error {
+  color: #f0a2a8;
+}
+
+.checklist-help {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.checklist-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.checklist-row label {
+  flex: 1;
+  min-width: 0;
+}
+
+.checklist-row label span {
+  overflow-wrap: anywhere;
+}
+
+.checklist-remove {
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.checklist-remove:hover {
+  background: var(--lavender);
+  color: #b04450;
+}
+
+.checklist-add-form {
+  display: flex;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.checklist-add-form button {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--purple-deep);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checklist-status {
+  min-height: 16px;
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 8px;
+}
+
+@media (max-width: 600px) {
+  .schedule-editor-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .schedule-editor-row label:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.guest-plans-prompt {
+  display: grid;
+  justify-items: start;
+  max-width: 760px;
+  min-height: 55vh;
+  align-content: center;
+  margin: 0 auto;
+  padding: clamp(30px, 7vw, 84px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 92% 8%, color-mix(in srgb, var(--lavender) 72%, transparent), transparent 38%), var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.guest-plans-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  border-radius: 15px;
+  background: var(--lavender);
+  color: var(--purple);
+  font-size: 19px;
+}
+
+.guest-plans-prompt h1 {
+  margin: 13px 0 10px;
+  font: 600 clamp(34px, 5vw, 52px)/1.13 'Playfair Display', serif;
+  letter-spacing: -1px;
+}
+
+.guest-plans-prompt h1 em {
+  color: var(--purple);
+  font-weight: 500;
+}
+
+.guest-plans-prompt p {
+  max-width: 570px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.guest-plans-prompt .hero-actions {
+  margin-top: 23px;
+}
+
+.planner-auth-link {
+  color: var(--purple);
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.planner-auth-link:hover {
+  color: var(--purple-deep);
+}
+
+.profile-logout[hidden],
+.planner-auth-link[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .guest-plans-prompt {
+    min-height: 58vh;
+    padding: 28px 22px;
+  }
+}

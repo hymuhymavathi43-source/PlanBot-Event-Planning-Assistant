@@ -1,0 +1,120 @@
+.planner-conversation {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+.planner-conversation .chat-messages {
+  min-height: min-content;
+}
+
+.planner-conversation .message-content > p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.planner-conversation .message-content time {
+  font-size: 11px;
+}
+
+.planner-conversation .generated-plan-card > p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.planner-conversation .plan-result-section h4 {
+  font-size: 14px;
+}
+
+.planner-conversation .plan-result-section ul {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.planner-conversation .plan-result-section li b {
+  font-size: 13px;
+}
+
+.planner-conversation .plan-card-action {
+  font-size: 11px;
+}
+
+.brief-content > .eyebrow {
+  font-size: 9px;
+}
+
+.brief-content > p {
+  font-size: 12px;
+}
+
+.brief-progress-top {
+  font-size: 10px;
+}
+
+.brief-details dt {
+  font-size: 10px;
+}
+
+.brief-details dd {
+  font-size: 11px;
+}
+
+.brief-note b {
+  font-size: 10px;
+}
+
+.brief-note small {
+  font-size: 9px;
+}
+
+.recent-chat-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+}
+
+.recent-chat-row .recent-chat {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+
+.recent-chat-delete:hover {
+  background: var(--paper-2);
+  color: #b85d65;
+}
+
+.recent-chat-delete {
+  display: grid;
+  flex: 0 0 30px;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: background .16s, color .16s, opacity .16s;
+}
+
+.recent-chat-row:hover .recent-chat-delete,
+.recent-chat-delete:focus-visible {
+  background: var(--paper-2);
+  color: #b85d65;
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .recent-chat-delete {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planner-conversation {
+    scroll-behavior: auto;
+  }
+}

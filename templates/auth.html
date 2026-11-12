@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f5">
+  <title>{{ 'Create account' if mode == 'register' else 'Log in' }} — PlanBot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css', v='guest-login-2') }}">
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <section class="auth-visual" aria-label="A beautifully arranged celebration">
+      <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=88" alt="An elegant celebration table with flowers and warm candlelight">
+      <div class="auth-visual-shade"></div>
+      <a class="brand auth-brand" href="/home" aria-label="PlanBot home"><span class="brand-mark"><span>✦</span></span><span>planbot<span class="brand-period">.</span></span></a>
+      <div class="auth-visual-copy"><span class="eyebrow">FOR THE MOMENTS THAT MATTER</span><h2>Make room for<br><em>the good part.</em></h2><p>Bring your celebration ideas together with a thoughtful plan, a clear budget, and a little help from PlanBot.</p></div>
+      <span class="auth-photo-caption"><i class="fa-solid fa-sparkles"></i> Your next beautiful moment starts here</span>
+    </section>
+    <section class="auth-form-panel">
+      <div class="auth-card" aria-labelledby="auth-heading">
+        <span class="eyebrow">YOUR PERSONAL EVENT STUDIO</span>
+        <h1 id="auth-heading">{{ 'Create your account' if mode == 'register' else 'Welcome back' }}</h1>
+        <p class="auth-intro">{{ 'Save your plans and keep every celebration organized.' if mode == 'register' else 'Log in to continue planning your celebrations.' }}</p>
+        {% if error %}<p class="auth-error" role="alert">{{ error }}</p>{% endif %}
+        <form method="post" action="{{ url_for('register' if mode == 'register' else 'login') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required value="{{ email }}" autofocus>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}" minlength="{{ 12 if mode == 'register' else 1 }}" maxlength="128" required>
+          {% if mode == 'register' %}
+          <small class="password-hint">Use at least 12 characters.</small>
+          <label for="confirm_password">Confirm password</label>
+          <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+          {% endif %}
+          <button class="button button-primary auth-submit" type="submit">{{ 'Create account' if mode == 'register' else 'Log in' }}</button>
+        </form>
+        <a class="auth-skip-link" href="/home" aria-label="Skip sign in and continue to PlanBot home"><span class="auth-skip-copy">{% if mode == 'register' %}Want to explore first?{% else %}Don't want to sign in yet?{% endif %}</span><strong>Skip for now <i class="fa-solid fa-arrow-right"></i></strong></a>
+        <p class="auth-switch">
+          {% if mode == 'register' %}Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+          {% else %}New to PlanBot? <a href="{{ url_for('register') }}">Create an account</a>{% endif %}
+        </p>
+        <p class="auth-footnote">Your plans and planning conversations are private to your account.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
