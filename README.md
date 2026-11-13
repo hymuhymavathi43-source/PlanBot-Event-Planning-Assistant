@@ -68,7 +68,7 @@ This project does not have an external AI API or model key configured. PlanBot c
 
    `PLANBOT_DATABASE_PATH` is optional. Leave it blank to keep using `planbot.db` next to `app.py`, or set it to an absolute path for another persistent SQLite file.
 
-4. Start the server and open <http://127.0.0.1:5000>:
+4. Start the server and open <https://planbot-event-planning-assistant-1.onrender.com>
 
    ```powershell
    python app.py
